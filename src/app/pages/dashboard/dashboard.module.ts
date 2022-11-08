@@ -21,7 +21,7 @@ import { DashboardService } from './services/dashboard.service';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component'; 
 import { SimpleModalModule } from 'ngx-simple-modal';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -29,11 +29,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FilterPipe } from '../../services/filter';
 import { DatePipe } from '@angular/common';
 import { ItemreceiveComponent } from './components/itemreceive/itemreceive.component';
-import { Ng2CompleterModule } from "ng2-completer";
+
 import { ItemissueComponent } from './components/itemissue/itemissue.component';
 import { barcodeprintcomponent } from './components/barcodeprint/barcodeprint.component';
-import { NgxBarcodeModule } from 'ngx-barcode';
+
 import { StockReportComponent } from './components/stockreport/stockreport.component';
+import { Ng2CompleterModule } from 'ng2-completer';
+// import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 
@@ -65,20 +67,21 @@ import { StockReportComponent } from './components/stockreport/stockreport.compo
     DatePipe
   ],
   imports: [
-  CommonModule,
+CommonModule,
     FormsModule,
     MatIconModule,
     DashboardRoutingModule,
     SimpleModalModule,
-    Ng2SmartTableModule,
+   
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
     NgxPrintModule,
-    Ng2CompleterModule,
-    NgxBarcodeModule,
+    // Ng2CompleterModule,
+    // Ng2SmartTableModule,
+
 
 
     

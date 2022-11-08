@@ -28,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery.flot/jquery.flot.js",
+              "node_modules/peity/jquery.peity.js",    
+               "node_modules/peity/jquery.peity.min.js"
+
+            ]
           },
           "configurations": {
             "production": {

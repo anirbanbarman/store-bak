@@ -11,14 +11,14 @@
       <input type="email" class="form-field animation a3" name="email" [(ngModel)]="loginForm.email" placeholder="Email"
         #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
       <div *ngIf="f.submitted && email.invalid" class="invalid ">
-        <div *ngIf="email.errors?.required" class="text-start"> Email is required</div>
+        <div *ngIf="email?.errors?.['required']" class="text-start"> Email is required</div>
       </div>
 
       <input type="password" class="form-field animation a4" [(ngModel)]="loginForm.password" name="password"
         #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required
         placeholder="Password">
       <div *ngIf="f.submitted && password.invalid" class="invalid " >
-        <div *ngIf="password.errors?.required" class="text-start"> Password is required</div>
+        <div *ngIf="password.errors?.['required']" class="text-start"> Password is required</div>
       </div>
 
       <div class="animation a5" style="margin: 20px">
