@@ -1,1 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+// @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+// @import "~@fortawesome/fontawesome-free/scss/regular.scss";
+// @import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.modal{
+    background-color:rgba(0,0,0,.4);
+    bottom:0;
+    height:100%;
+    left:0;
+    overflow: hidden;
+    padding: 0 16px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    text-align: center;
+    z-index: 999; /* Adjust according to your needs */
+  }
+  
+  .modal.fade-anim {
+    transition: opacity 400ms ease-in-out;
+    will-change: opacity;
+    opacity: 0;
+  }
+  
+  .modal.fade-anim.in {
+    opacity: 1;
+  }
+  
+  .modal-open {
+    overflow: hidden;
+  }
+  
+  .modal-content {
+    background-color:#ffffff;
+    border-radius: 4px;
+    margin: 16px auto;
+    max-width: 80%;
+    position: relative;
+    transition: opacity 400ms ease-in-out;
+    width: 100%;
+    will-change: opacity;
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .modal-content-size-m {
+    max-width: 992px;
+  }
+  
+  .modal-content-size-l {
+    max-width: 1200px;
+  }
+  
+  .modal-footer,
+  .modal-header {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 56px;
+    padding: 0 16px;
+    color:white;
+   
+  }
+  
+  .modal-header {
+    border-bottom:1px solid #cecece;
+    background-color: #3cb0fd;
+  }
+  
+  .modal-body {
+    padding: 16px;
+  }
+  
+  .modal-footer {
+    border-top:1px solid #cecece;
+  }
+  
+  
+  
+  /* Some button basic styles because i don't want BS in this demo */
+  .btn {
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
+    font-family: Calibri;
+    color: #ffffff;
+    font-size: 14px;
+    background: #083546;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+  }
+  
+  .btn:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

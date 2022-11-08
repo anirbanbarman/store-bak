@@ -1,0 +1,56 @@
+
+
+<div class="az-content az-content-profile">
+  <div class="mn-ht-100vx">
+    <div class="az-content-body az-content-body-profile ">
+      <div class="az-profile-body">
+        <label class="title">Stock Report</label>        
+        <hr>
+         <div class="row">
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <button class="btn btn-primary" (click)="excel()">Excel</button>
+            </div>
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <div class="form-check form-switch ps-0">
+                <input style="background: transparent !important;" type="text" [(ngModel)]="search"  class="form-control" placeholder="Search">
+                <ng-template #noResults>
+                  <label class="form-check-label text-body  text-truncate w-80 mb-0" for="flexSwitchCheckDefault">No results found for "{{search}}".</label>
+                </ng-template>
+              </div>
+            </div>
+          </div> 
+          <hr>
+
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0" *ngIf="(outputList | filter: search).length > 0; else noResults" id="datatable">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of outputList | filter: search; let i = index  ">
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.description}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.quantity}}</span>
+                  </td>
+                
+                 
+                </tr>
+                
+              </tbody>
+            </table>
+            
+          </div> 
+         
+   
+
+          <hr>
+        </div>  
+
+      </div>
+    </div>
+  </div>container

@@ -1,0 +1,86 @@
+
+<div class="modal-content">
+  {{data}}
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Select Item </h4>
+    <button type="button" class="close" aria-label="Close">  
+    </button>
+    
+ </div>
+ <div class="modal-body">
+  <div class="form-group row">
+    <div class="col-md-3"></div>
+      <div class="col-md-6">    
+      <div class="input-group" style="border-radius: 10px;">
+        <input type="text" class="form-control _input" placeholder="Search..." (input)="search($event)">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <hr>
+  <div class="table-responsive" #datatable>
+    <table id="datatable1" class="mg-b-0 table" >
+      <thead>
+        <tr>
+          <th class="wd-10p">Code</th>
+          <th class="wd-20p">Description</th>
+          <th class="wd-10p">Category</th>
+          <th class="wd-10p">UOM</th>
+          <th class="wd-10p">HSN Code</th>
+          <th class="wd-10p">GST %</th>
+          <th class="wd-10p">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dummy;">
+              <td>
+                  <ngx-skeleton-loader count="1"
+                      [theme]="{ 'border-radius': '5px', height: '10px', border: '1px solid white' }">
+                  </ngx-skeleton-loader>
+              </td>
+              <td>
+                  <ngx-skeleton-loader count="1"
+                      [theme]="{ 'border-radius': '5px', height: '10px', border: '1px solid white' }">
+                  </ngx-skeleton-loader>
+              </td>
+              <td>
+                <ngx-skeleton-loader count="1"
+                    [theme]="{ 'border-radius': '5px', height: '10px', border: '1px solid white' }">
+                </ngx-skeleton-loader>
+              </td>
+              <td>
+                <ngx-skeleton-loader count="1"
+                    [theme]="{ 'border-radius': '5px', height: '10px', border: '1px solid white' }">
+                </ngx-skeleton-loader>
+              </td>
+              <td>
+                <ngx-skeleton-loader count="1"
+                    [theme]="{ 'border-radius': '5px', height: '10px', border: '1px solid white' }">
+                </ngx-skeleton-loader>
+              </td>
+              
+             
+          </tr>
+          <tr
+              *ngFor="let item of dataList | paginate: {id:'pagin1', itemsPerPage: 10, currentPage: page };let i = index;">
+              <td> {{item.code}}</td>
+              <td> {{item.description}}</td>
+              <td> {{item.category}}</td>
+              <td> {{item.unit}}</td>
+              <td> {{item.hsn}}</td>
+              <td> {{item.gst}}</td>
+              <td><button type="button" (click)="selectItem(item)" class="btn btn-primary btn-block">Select</button>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
+ <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+  </div>
+</div>

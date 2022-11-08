@@ -1,0 +1,29 @@
+<div class="az-navbar az-navbar-two az-navbar-dashboard-eight">
+  <div class="container">
+    <div><a routerLink="index.html" class="az-logo">az<span>i</span>a</a></div>
+    <div class="az-navbar-search">
+      <input type="search" class="form-control" placeholder="Search for schedules and events...">
+      <button class="btn"><i class="fas fa-search "></i></button>
+    </div><!-- az-navbar-search -->
+    <ul class="nav">
+      <li class="nav-label">Main Menu</li>
+
+      <li class="nav-item " [ngClass]="{'active': step === 'step1'}" clickOutside (clickOutside)="hide(show1)" #show1 (click)="showDropdown(show1,'step1')" >
+        <a routerLink="/dashboard/home/" class="nav-link with-sub"><i class="typcn typcn-clipboard"></i>Dashboard</a>
+      </li><!-- nav-item -->
+     <li class="nav-item" [ngClass]="{'active': step === 'step2'}"   clickOutside (clickOutside)="hide(show2)" #show2 (click)="showDropdown(show2,'step2')">
+        <a class="nav-link with-sub"><i class="typcn typcn-document"></i>Reports</a>
+        <nav class="nav-sub">
+          <a routerLink="/dashboard/home//report" class="nav-sub-link">Reports</a>
+        </nav>
+      </li>
+
+      <li class="nav-item" [ngClass]="{'active': step === 'step8'}"  clickOutside (clickOutside)="hide(show8)" #show8 (click)="showDropdown(show8,'step8')">
+        <a  class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i>Settings</a>
+        <nav class="nav-sub">
+          <a  class="nav-sub-link">Account Settings</a>
+        </nav>
+      </li><!-- nav-item -->
+    </ul><!-- nav -->
+  </div><!-- container -->
+</div>

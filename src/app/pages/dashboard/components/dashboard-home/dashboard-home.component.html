@@ -1,0 +1,259 @@
+
+
+<div class="az-content az-content-profile" *ngIf="userid==1">
+  <div class="mn-ht-100vx">
+    <div class="az-content-body az-content-body-profile ">
+      <div class="az-profile-body">
+        <label class="title">Item Details</label>        
+        <hr>
+		      <div class="row row-sm justify-content-center">
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Timestamp</label>
+                <input name="time" [(ngModel)]="data.time" type="date" class="form-control" placeholder="Timestamp" required>
+              </div>
+            </div> 
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Section Code</label>
+                <input name="text" [(ngModel)]="data.sectioncode" type="text" class="form-control" placeholder="Section Code" readonly> 
+               
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Item Code</label>
+                <input name="text" [(ngModel)]="data.itemcode" type="text" class="form-control" placeholder="Item Code"  readonly>
+              </div>
+            </div>
+            <div class="col-md-4 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Make</label>
+                <input name="text" [(ngModel)]="data.make" type="text" class="form-control" placeholder="Make"  >
+              </div>
+            </div> 
+ 
+                
+          </div> 
+          <div class="row row-sm justify-content-center">
+            
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Quantity</label>
+                <input name="text" [(ngModel)]="data.quantity" type="text" class="form-control" placeholder="Quantity" >
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Unit</label>
+                <input name="text" [(ngModel)]="data.unit" type="text" class="form-control" placeholder="Unit"  >
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Section</label>
+                <!-- <input name="text" [(ngModel)]="data.section" type="text" class="form-control" placeholder="Section"  > -->
+                <select name="select" [(ngModel)]="data.section" class="form-control" (change)="getsectioncode(data.section)">
+                  <option value='Gen Sets'>Gen Sets</option>
+                  <option value='Boiler'>Boiler</option>
+                  <option value='Cleaning Section'>Cleaning Section</option>
+                  <option value='Parboiling Section'>Parboiling Section</option>
+                  <option value='Milling Section'>Milling Section</option>
+                  <option value='Construction (Civil)'>Construction (Civil)</option>
+                  <option value='Packing Items'>Packing Items</option>
+                  <option value='Common Product'>Common Product</option>
+                  <option value='Stationary'>Stationary</option>
+                  <option value='Electronics'>Electronics</option>
+                  <option value='Compressor'>Compressor</option>
+                  <option value='Electrical'>Electrical</option>
+                  <option value='Maintenance'>Maintenance</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <select name="select" [(ngModel)]="data.location" class="form-control">
+                  <option value='1A'>1A</option>
+                  <option value='1B'>1B</option>
+                  <option value='1C'>1C</option>
+                  <option value='1D'>1D</option>
+                  <option value='1E'>1E</option>
+                  <option value='2A'>2A</option>
+                  <option value='2B'>2B</option>
+                  <option value='2C'>2C</option>
+                  <option value='2D'>2D</option>
+                  <option value='2E'>2E</option>
+                  <option value='3A'>3A</option>
+                  <option value='3B'>3B</option>
+                  <option value='3C'>3C</option>
+                  <option value='3D'>3D</option>
+                  <option value='3E'>3E</option>
+                  <option value='4A'>4A</option>
+                  <option value='4B'>4B</option>
+                  <option value='4C'>4C</option>
+                  <option value='4D'>4D</option>
+                  <option value='4E'>4E</option>
+                  <option value='5A'>5A</option>
+                  <option value='5B'>5B</option>
+                  <option value='5C'>5C</option>
+                  <option value='5D'>5D</option>
+                  <option value='5E'>5E</option>
+                  <option value='6A'>6A</option>
+                  <option value='6B'>6B</option>
+                  <option value='6C'>6C</option>
+                  <option value='6D'>6D</option>
+                  <option value='6E'>6E</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Part Code</label>
+                <input name="text" [(ngModel)]="data.partcode" type="text" class="form-control" placeholder="Part Code"  >
+              </div>
+            </div>  
+   
+          </div> 
+
+          <div class="row row-sm justify-content-center">
+            <div class="col-md-6 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea  rows="4" class="form-control" cols="50" [(ngModel)]="data.description">                    
+                </textarea>
+              </div>
+            </div> 
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Image</label>
+                <input (change)="preview_image($event.target)" type="file" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <a [href]="api.mediaURL+ data.image" target="_blank">
+                    <img [src]="api.mediaURL+ data.image" alt="" style="height: 100px;width: 100px;float: right;"
+                     onError="this.src='assets/images/upload.png'">
+                </a> 
+              </div>
+            </div>
+          </div> 
+
+		    
+
+        
+
+         
+
+
+          <div class="row row-sm justify-content-center">
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="new()">New</button>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="submit()">Save</button>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="delete()">Delete</button>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <button class="btn btn-primary" (click)="excel()">Excel</button>
+            </div>
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <div class="form-check form-switch ps-0">
+                <input style="background: transparent !important;" type="text" [(ngModel)]="search"  class="form-control" placeholder="Search">
+                <ng-template #noResults>
+                  <label class="form-check-label text-body  text-truncate w-80 mb-0" for="flexSwitchCheckDefault">No results found for "{{search}}".</label>
+                </ng-template>
+              </div>
+            </div>
+          </div> 
+          <hr>
+
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0" *ngIf="(outputList | filter: search).length > 0; else noResults" id="datatable">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Picture of the Material</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Make </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unit</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Timestamp</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section Code</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section Alloted</th>                  
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Part Code</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Print</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of outputList | filter: search; let i = index  ">
+                  <td class="align-middle text-left">
+                    <!-- <span class="text-secondary text-xs font-weight-bold">{{item.image}}</span> -->
+
+                    <img class="avatar avatar-sm me-3" style="height: 40px;"
+                                            [src]="mediaURL+item.image" onError="this.src='assets/images/icon.ico'"
+                                            alt="chat-user">
+
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.description}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.make}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.quantity}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.unit}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.time}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.sectioncode}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.section}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.location}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.partcode}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <button [className]="getClass(item.exittime)" (click)="openItem(item.id)">Edit</button>
+                  </td>
+                  <td class="align-middle text-left">
+                    <button class="btn btn-primary" (click)="print(item.id)">Print Barcode</button>
+                  </td>
+                 
+                </tr>
+                
+              </tbody>
+            </table>
+            
+          </div> 
+         
+   
+
+          <hr>
+        </div>  
+
+      </div>
+    </div>
+  </div>

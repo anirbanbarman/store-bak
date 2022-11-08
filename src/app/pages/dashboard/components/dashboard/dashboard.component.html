@@ -1,0 +1,53 @@
+<div class="az-iconbar">
+  <a href="index.html" class="az-iconbar-logo"><i class="typcn typcn-chart-bar-outline"></i></a>
+  <nav class="nav">
+    <a *ngFor="let nav of navData" (click)="selectData(nav)" [ngClass]="{'active': nav.active === true}"   class="nav-link"><i [class]="nav.icon"></i></a>
+    <!-- <a  class="nav-link"><i class="typcn typcn-calendar-outline"></i></a> -->
+    <!-- <a href="#asideUIElements" class="nav-link"><i class="typcn typcn-book"></i></a>
+    <a href="#asideForms" class="nav-link"><i class="typcn typcn-folder-add"></i></a>
+    <a href="#asideCharts" class="nav-link"><i class="typcn typcn-chart-line-outline"></i></a>
+    <a href="#asideMaps" class="nav-link"><i class="typcn typcn-map"></i></a> -->
+    <a (click)="showSideBar()"  class="nav-link"><i class="typcn typcn-th-large-outline"></i></a>
+  </nav>
+  <div class="az-iconbar-bottom">
+    <a href="" class="az-iconbar-help"><i class="far fa-question-circle"></i></a>
+    <a href="" class="az-img-user online"><img src="/assets/images/adminicon.png" alt=""></a>
+  </div><!-- az-iconbar-bottom -->
+</div><!-- az-iconbar -->
+<div class="az-iconbar-aside show" #side1>
+  <div class="az-iconbar-header">
+    <a href="index.html" class="az-logo">
+      <img src="assets/images/logo.png" class="animation a6" style="margin: 0 auto 10px;width: 150px">
+    </a>
+    <a (click)="hideSideBar()" class="az-iconbar-toggle-menu">
+      <i class="icon ion-md-arrow-back"></i>
+      <i class="icon ion-md-close"></i>
+    </a>
+  </div><!-- az-iconbar-header -->
+  <div class="az-iconbar-body ">
+    <div id="item" class="az-iconbar-pane show" #side2>
+      <h2 class="az-iconbar-title">{{activeNav.title}}</h2>
+      <small class="az-iconbar-text">{{activeNav.subTitle}}</small>
+
+      <nav class="nav">
+        <a *ngFor="let item of activeNav.links" [routerLink]="item.link" class="nav-link">{{item.name}}</a>
+
+      </nav>
+    </div>
+
+
+
+  </div><!-- az-iconbar-body -->
+</div><!-- az-iconbar-aside -->
+
+
+
+<div class="az-content az-content-dashboard-three">
+  <div class="az-header az-header-dashboard-three">
+    <app-header></app-header>
+
+  </div><!-- az-header -->
+ <router-outlet></router-outlet>
+  <app-footer></app-footer>
+
+</div><!-- az-content -->

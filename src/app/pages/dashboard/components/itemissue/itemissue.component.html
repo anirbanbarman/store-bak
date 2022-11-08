@@ -1,0 +1,138 @@
+
+
+<div class="az-content az-content-profile"  *ngIf="userid==1 || userid==2">
+  <div class="mn-ht-100vx">
+    <div class="az-content-body az-content-body-profile ">
+      <div class="az-profile-body">
+        <label class="title">Item Issue</label>        
+        <hr>
+          <div class="row row-sm justify-content-center">
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">Description</label>
+                <ng2-completer  [inputClass]="'form-control'" [datasource]="itemlist"  [(ngModel)]="data.Description" [minSearchLength]="2" (change)="getStockQuantity(data.Description)" (onKeyUp)="getStockQuantity(data.Description)" ></ng2-completer>
+                <label class="form-label">Stock Quantity:{{stockquantity}}</label>
+              </div>
+
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
+                <label class="form-label">Scan</label>
+
+                <div [hidden]="!barcodeValue">
+                  {{ barcodeValue }}
+                </div>
+              </div>
+
+            </div>
+            
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Date</label>
+                <input name="date" [(ngModel)]="data.Date" type="date" class="form-control" placeholder="Date" >
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Quantity</label>
+                <input name="text" [(ngModel)]="data.Quantity" type="text" class="form-control" placeholder="Quantity"  >
+              </div>
+            </div>
+            <div class="col-md-2 mg-t-20 mg-md-t-0">
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input name="text" [(ngModel)]="data.Location" type="text" class="form-control" placeholder="Location"  >
+              </div>
+            </div>
+  
+          </div> 
+
+
+
+		    
+
+        
+
+         
+
+
+          <div class="row row-sm justify-content-center">
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="new()">New</button>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="submit()">Save</button>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="delete()">Delete</button>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <button class="btn btn-primary" (click)="excel()">Excel</button>
+            </div>
+            <div class="col-xl-6 col-md-6 mb-xl-0 mb-4">
+              <div class="form-check form-switch ps-0">
+                <input style="background: transparent !important;" type="text" [(ngModel)]="search"  class="form-control" placeholder="Search">
+                <ng-template #noResults>
+                  <label class="form-check-label text-body  text-truncate w-80 mb-0" for="flexSwitchCheckDefault">No results found for "{{search}}".</label>
+                </ng-template>
+              </div>
+            </div>
+          </div> 
+          <hr>
+
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0" *ngIf="(outputList | filter: search).length > 0; else noResults" id="datatable">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity </th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of outputList | filter: search; let i = index  ">
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.Date}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.Description}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.Quantity}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <span class="text-secondary text-xs font-weight-bold">{{item.Location}}</span>
+                  </td>
+                  <td class="align-middle text-left">
+                    <button [className]="getClass(item.exittime)" (click)="openItem(item.id)">Edit</button>
+                  </td>
+
+                 
+                </tr>
+                
+              </tbody>
+            </table>
+            
+          </div> 
+         
+   
+
+          <hr>
+        </div>  
+
+      </div>
+    </div>
+  </div>
