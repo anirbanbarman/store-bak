@@ -454,6 +454,7 @@ export class DashboardHomeComponent implements OnInit,OnDestroy {
   getDataAll() {
     this.spinner.show()
     this.dashboardService.StoreitemList().subscribe((response: any) => {
+      debugger
       if (response && response.status === 200 && response.data) {
         this.spinner.hide();
         const info = response.data;

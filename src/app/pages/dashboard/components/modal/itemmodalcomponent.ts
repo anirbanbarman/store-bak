@@ -63,18 +63,18 @@ export class ItemModalComponent extends SimpleModalComponent<ItemModal, any> imp
   
 getitemList()
 {
-this.dashboardService.getAllItem().subscribe((response:any)=>{
-console.log(response.data);
-this.dummy = [];
-if (response && response.status === 200) {
-this.dataList = response.data;
-this.dummyDataList = response.data;
-}
-}, error => {
-console.log(error);
-failMessage('Something went wrong');
-this.dummy = [];
-});
+// this.dashboardService.getAllItem().subscribe((response:any)=>{
+// console.log(response.data);
+// this.dummy = [];
+// if (response && response.status === 200) {
+// this.dataList = response.data;
+// this.dummyDataList = response.data;
+// }
+// }, error => {
+// console.log(error);
+// failMessage('Something went wrong');
+// this.dummy = [];
+// });
 }
 
 

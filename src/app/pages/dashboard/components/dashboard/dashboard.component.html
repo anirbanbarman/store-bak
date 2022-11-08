@@ -26,11 +26,11 @@
   </div><!-- az-iconbar-header -->
   <div class="az-iconbar-body ">
     <div id="item" class="az-iconbar-pane show" #side2>
-      <h2 class="az-iconbar-title">{{activeNav.title}}</h2>
-      <small class="az-iconbar-text">{{activeNav.subTitle}}</small>
+      <h2 class="az-iconbar-title">{{activeNav?.title}}</h2>
+      <small class="az-iconbar-text">{{activeNav?.subTitle}}</small>
 
       <nav class="nav">
-        <a *ngFor="let item of activeNav.links" [routerLink]="item.link" class="nav-link">{{item.name}}</a>
+        <a *ngFor="let item of activeNav?.links" [routerLink]="item?.link" class="nav-link">{{item?.name}}</a>
 
       </nav>
     </div>

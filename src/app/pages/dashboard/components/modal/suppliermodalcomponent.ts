@@ -106,27 +106,27 @@ export class SupplierModalComponent extends SimpleModalComponent<SupplierModal, 
 
   getsupplier()
   {
-    this.dashboardService.getAllparty().subscribe((response:any)=>{
-    console.log(response.data);
-    this.dummysupplierList = [];
-    if (response && response.status === 200) {
-        //this.supplierList = response.data;
-        this.dummysupplierList = response.data;
+    // this.dashboardService.getAllparty().subscribe((response:any)=>{
+    // console.log(response.data);
+    // this.dummysupplierList = [];
+    // if (response && response.status === 200) {
+    //     //this.supplierList = response.data;
+    //     this.dummysupplierList = response.data;
 
-        for (var i=0;i< response.data.length;i++)
-        {
-          if(response.data[i].type=="Supplier")
-          {
-            this.supplierList.push( response.data[i])
-          }
+    //     for (var i=0;i< response.data.length;i++)
+    //     {
+    //       if(response.data[i].type=="Supplier")
+    //       {
+    //         this.supplierList.push( response.data[i])
+    //       }
     
-        }
-      }
-    }, error => {
-       console.log(error);
-       failMessage('Something went wrong');
-       this.dummysupplierList = [];
-    });
+    //     }
+    //   }
+    // }, error => {
+    //    console.log(error);
+    //    failMessage('Something went wrong');
+    //    this.dummysupplierList = [];
+    // });
   }
 
 

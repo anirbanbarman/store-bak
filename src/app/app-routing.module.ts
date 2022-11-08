@@ -11,11 +11,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
   },
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-  // }
-//  ,
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+  }
+ ,
   {
     path: 'startup',
     loadChildren: () => import('./pages/startup/startup.module').then(m=>m.StartupModule),

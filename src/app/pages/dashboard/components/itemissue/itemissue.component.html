@@ -1,17 +1,26 @@
 
 
 <div class="az-content az-content-profile"  *ngIf="userid==1 || userid==2">
+
+
+
+
+
+
+
+
   <div class="mn-ht-100vx">
     <div class="az-content-body az-content-body-profile ">
       <div class="az-profile-body">
-        <label class="title">Item Issue</label>        
+        <label class="title">Item Issue</label>   
+           
         <hr>
           <div class="row row-sm justify-content-center">
 
             <div class="col-md-4">
               <div class="form-group">
                 <label class="form-label">Description</label>
-                <ng2-completer  [inputClass]="'form-control'" [datasource]="itemlist"  [(ngModel)]="data.Description" [minSearchLength]="2" (change)="getStockQuantity(data.Description)" (onKeyUp)="getStockQuantity(data.Description)" ></ng2-completer>
+                <input class='form-control'  [(ngModel)]="data.Description" (change)="getStockQuantity(data.Description)" (onKeyUp)="getStockQuantity(data.Description)" />
                 <label class="form-label">Stock Quantity:{{stockquantity}}</label>
               </div>
 
@@ -19,11 +28,38 @@
 
             <div class="col-md-2">
               <div class="form-group">
-                <label class="form-label">Scan</label>
+                <label class="form-label" (click)="scanMe()">Scan</label>
+                <div>
+    
+                  <div class="scanner-shell" >
+                    <select name="" id="" (change)="onDevicesChange($event)">
+                      <option value="" [selected]="!currentDevice">No device</option>
+                      <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId===currentDevice.deviceId">{{device.label}}</option>
+              
+              
+                    </select>
+              
+                    <zxing-scanner style="width: 200px"  #scanner (scanSuccess)="scanSuccessHandler($event)" [formats]="formatsEnabled">
+                    </zxing-scanner>
+                    <section >
+                      <small>Result</small>
+                      <strong>{{qrResult}}</strong>
+                      <strong>{{qrResultsString}}</strong>
+              
+              
+                    </section>
+              
+              
+              
+                  </div>
+              
+              
+              
+              
+                </div>  
+                
 
-                <div [hidden]="!barcodeValue">
-                  {{ barcodeValue }}
-                </div>
+           <button class="btn btn-success">Scan Here</button>
               </div>
 
             </div>

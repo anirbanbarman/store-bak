@@ -20,6 +20,8 @@ import { TableUtil } from "src/app/services/tableutils";
 import { environment } from '../../../../../environments/environment';
 import * as XLSX from "xlsx";
 import { ApisService } from 'src/app/services/apis.service';
+import{ZXingScannerComponent} from '@zxing/ngx-scanner';
+import{Result,BarcodeFormat } from '@zxing/library';
 
 
 @Component({
@@ -29,6 +31,16 @@ import { ApisService } from 'src/app/services/apis.service';
   providers: [DatePipe]
 })
 export class ItemissueComponent implements OnInit,OnDestroy {
+
+  @ViewChild('scanner')
+  scanner!:any;
+  hasDevices!:boolean;
+  qrResult!:any;
+  qrResultsString!:string;
+  availableDevices!:MediaDeviceInfo[];
+  currentDevice!:MediaDeviceInfo;
+  hasPermission!:boolean;
+
 
 
   userid:any;
@@ -49,6 +61,12 @@ export class ItemissueComponent implements OnInit,OnDestroy {
     Quantity:  "",
     Location:  "",
   }
+  formatsEnabled: BarcodeFormat[] = [
+    BarcodeFormat.CODE_128,
+    BarcodeFormat.DATA_MATRIX,
+    BarcodeFormat.EAN_13,
+    BarcodeFormat.QR_CODE,
+  ];
 
   isNew!: boolean;
 
@@ -56,6 +74,9 @@ export class ItemissueComponent implements OnInit,OnDestroy {
 
   displayedColumns:any;
   barcodeValue:any;
+
+
+
 
   constructor(
     private dashboardService: DashboardService,
@@ -95,7 +116,18 @@ export class ItemissueComponent implements OnInit,OnDestroy {
   }
 
 
+  onDevicesChange(value:any){
+    let _value=value.target.value;
+    this.currentDevice=this.scanner?.getDeviceById(_value)
 
+
+  }
+
+  scanSuccessHandler(value:any){
+    console.log(value)
+    this.qrResultsString=value
+
+  }
   getItemAll() {
     this.spinner.show()
     this.dashboardService.StoreitemList().subscribe((response: any) => {
@@ -158,6 +190,25 @@ export class ItemissueComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {  
     //this.scanner.start();
+    this.scanner?.camerasFound.subscribe((devices:MediaDeviceInfo[])=>{
+      this.hasDevices=true;
+      this.availableDevices=devices;
+      for(const device of devices){
+
+        if(/back|rear|envirnoment/gi.test(device.label)){
+         new  this.scanner.deviceChange();
+          this.currentDevice=device;
+          break;
+        }
+      
+
+      }
+      this.scanner.camerasNotFound.subscribe(()=>this.hasDevices=false);
+      this.scanner.scanComplete.subscribe((result:Result)=>{this.qrResult=result;console.log("kjhkh")});
+      this.scanner.permissionResponse.subscribe((prem:boolean)=>this.hasPermission=prem);
+
+
+    })
   }
 
   ngOnDestroy(): void {
@@ -499,6 +550,10 @@ export class ItemissueComponent implements OnInit,OnDestroy {
 
   onStarted(started:any) {
     console.log(started);
+  }
+
+  scanMe(){
+
   }
  
 }

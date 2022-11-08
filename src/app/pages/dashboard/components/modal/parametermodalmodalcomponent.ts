@@ -56,18 +56,18 @@ export class ParameterModalComponent extends SimpleModalComponent<ParameterModal
   
   getAlltestparameter()
 {
-this.dashboardService.getAlltestparameter().subscribe((response:any)=>{
-console.log(response.data);
-this.dummy = [];
-if (response && response.status === 200) {
-this.dataList = response.data;
-this.dummyDataList = response.data;
-}
-}, error => {
-console.log(error);
-failMessage('Something went wrong');
-this.dummy = [];
-});
+// this.dashboardService.getAlltestparameter().subscribe((response:any)=>{
+// console.log(response.data);
+// this.dummy = [];
+// if (response && response.status === 200) {
+// this.dataList = response.data;
+// this.dummyDataList = response.data;
+// }
+// }, error => {
+// console.log(error);
+// failMessage('Something went wrong');
+// this.dummy = [];
+// });
 }
 
 
